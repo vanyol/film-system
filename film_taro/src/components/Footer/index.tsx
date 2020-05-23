@@ -7,8 +7,8 @@ import { useState, useCallback, useRouter } from '@tarojs/taro'
 
 enum ROUTES {
   '/pages/index/index',
-  '/pages/cinema/index',
   '/pages/movie/index',
+  '/pages/cinema/index',
   '/pages/mine/index'
 }
 
