@@ -31,7 +31,8 @@ class App extends Component {
       'pages/index/index',
       'pages/cinema/index',
       'pages/movie/index',
-      'pages/mine/index'
+      'pages/mine/index',
+      'pages/movieDetail/index'
     ],
     window: {
       backgroundTextStyle: 'light',
