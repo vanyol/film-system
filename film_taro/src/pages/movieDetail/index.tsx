@@ -5,7 +5,7 @@ import "taro-ui/dist/style/components/rate.scss"
 import { AtRate } from "taro-ui"
 import ajax from "../../api/ajax"
 import { movie, getMovie } from "../movie"
-import { useState, useEffect } from "@tarojs/taro"
+import { useState, useEffect, useRouter } from "@tarojs/taro"
 
 function getMovieDetail(id: number) {
   return ajax.get(`getMovieDetail?movieId=${id}`)
@@ -36,13 +36,17 @@ interface Comment {
 export default function Index() {
   const [movie, setMovie] = useState<any>({})
   const [comments, setComments] = useState<any>([])
+  const { id } = useRouter().params
   useEffect(() => {
-    getComments(4).then(e => setComments(e.data.data))
-    getMovieDetail(4).then(e => setMovie(e.data.data[0]))
+    getComments(+id).then(e => setComments(e.data.data))
+    getMovieDetail(+id).then(e => setMovie(e.data.data[0]))
   }, [])
   return (
     <View className="detail">
-      <View className="header at-icon at-icon-chevron-left">
+      <View className="header">
+        <Text className="back at-icon at-icon-chevron-left"
+          onClick={() => Taro.navigateBack()}
+        ></Text>
         <Text className="name">{movie.name}</Text>
       </View>
       <View className="movie-info">
@@ -67,11 +71,11 @@ export default function Index() {
         <View className="item2">
           <View className="titles">
             <Text>口碑</Text>
-            <Text>{movie.wish_num > 0 ? movie.wish_num : '暂无想看'}</Text>
+            <Text>{movie.wish_num > 0 ? `${movie.wish_num}人` : '暂无'}想看</Text>
           </View>
           <View className="rate">
             <AtRate size={25} max={5} value={movie.score / 2} ></AtRate>
-            <Text className="score">9.0分</Text>
+            <Text className="score">{movie.score}分({comments.length > 0 ? `${comments.length}人` : '暂无'}评论)</Text>
           </View>
         </View>
         <View className="item3">

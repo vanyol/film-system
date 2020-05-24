@@ -53,7 +53,12 @@ export default function Index() {
       </View>
       {movieList.map(movie => (
         <View className="movie-item">
-          <Image className="cover" style="width:75px;height:100px;" src={movie.poster} />
+          <Image
+            className="cover"
+            style="width:75px;height:100px;"
+            src={movie.poster}
+            onClick={() => Taro.navigateTo({ url: `/pages/movieDetail/index?id=${movie.movie_id}` })}
+          />
           <View className="info">
             <View className="name">{movie.name}</View>
             <View className="desc-info">
