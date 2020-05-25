@@ -35,7 +35,7 @@ export default function Index() {
   }, [setMovieList])
 
   return (
-    <View>
+    <View className="movie-list">
       <View className="movie-item">
         <Image className="cover" style="width:75px;height:100px;" src="http://localhost:3000/images/movie/hot4.jpg" />
         <View className="info">
