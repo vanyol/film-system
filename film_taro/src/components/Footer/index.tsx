@@ -1,7 +1,4 @@
 import { AtTabBar } from 'taro-ui'
-import "taro-ui/dist/style/components/tab-bar.scss"
-import "taro-ui/dist/style/components/badge.scss"
-import "taro-ui/dist/style/components/icon.scss"
 import './index.styl'
 import { useState, useCallback, useRouter } from '@tarojs/taro'
 
